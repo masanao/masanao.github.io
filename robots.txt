@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://masanao.github.io/sitemap.xml 

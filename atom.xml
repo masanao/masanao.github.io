@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Octopress Blog]]></title>
+  <link href="http://masanao.github.io/atom.xml" rel="self"/>
+  <link href="http://masanao.github.io/"/>
+  <updated>2014-01-11T20:24:17+09:00</updated>
+  <id>http://masanao.github.io/</id>
+  <author>
+    <name><![CDATA[Masanao Sato]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Instruction for Mulberry]]></title>
+    <link href="http://masanao.github.io/blog/2014/01/11/instruction-for-mulberry/"/>
+    <updated>2014-01-11T18:59:00+09:00</updated>
+    <id>http://masanao.github.io/blog/2014/01/11/instruction-for-mulberry</id>
+    <content type="html"><![CDATA[<h1>Mullberyマニュアル</h1>
+
+<p>Sorry, written only in Japanese at this point.</p>
+
+<h1>0. 概要</h1>
+
+<ol>
+<li>fragment生成</li>
+<li>dsRNAデザイン</li>
+</ol>
+
+
+<h1>1. fragment生成</h1>
+]]></content>
+  </entry>
+  
+</feed>
