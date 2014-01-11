@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://masanao.github.io/atom.xml" rel="self"/>
   <link href="http://masanao.github.io/"/>
-  <updated>2014-01-11T20:27:30+09:00</updated>
+  <updated>2014-01-11T20:41:31+09:00</updated>
   <id>http://masanao.github.io/</id>
   <author>
     <name><![CDATA[Masanao Sato]]></name>
@@ -14,24 +14,13 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Test]]></title>
-    <link href="http://masanao.github.io/blog/2014/01/11/test/"/>
-    <updated>2014-01-11T20:27:04+09:00</updated>
-    <id>http://masanao.github.io/blog/2014/01/11/test</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Instruction for Mulberry]]></title>
     <link href="http://masanao.github.io/blog/2014/01/11/instruction-for-mulberry/"/>
     <updated>2014-01-11T18:59:00+09:00</updated>
     <id>http://masanao.github.io/blog/2014/01/11/instruction-for-mulberry</id>
-    <content type="html"><![CDATA[<h1>Mullberyマニュアル</h1>
+    <content type="html"><![CDATA[<p>Sorry, this content is written only in Japanese at this point.</p>
 
-<p>Sorry, written only in Japanese at this point.</p>
-
-<h1>0. 概要</h1>
+<h3>0. 概要</h3>
 
 <ol>
 <li>fragment生成</li>
@@ -39,7 +28,7 @@
 </ol>
 
 
-<h1>1. fragment生成</h1>
+<h3>1. fragment生成</h3>
 ]]></content>
   </entry>
   
