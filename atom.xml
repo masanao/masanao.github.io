@@ -4,7 +4,7 @@
   <title><![CDATA[/Users/masanao]]></title>
   <link href="http://masanao.github.io/atom.xml" rel="self"/>
   <link href="http://masanao.github.io/"/>
-  <updated>2014-01-12T00:09:24+09:00</updated>
+  <updated>2014-01-15T23:52:30+09:00</updated>
   <id>http://masanao.github.io/</id>
   <author>
     <name><![CDATA[Masanao Sato]]></name>
@@ -12,6 +12,118 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[instruction for SnapDragon_v0.1]]></title>
+    <link href="http://masanao.github.io/blog/2014/01/15/instruction-for-snapdragon-v0-dot-1/"/>
+    <updated>2014-01-15T22:58:55+09:00</updated>
+    <id>http://masanao.github.io/blog/2014/01/15/instruction-for-snapdragon-v0-dot-1</id>
+    <content type="html"><![CDATA[<p><span style="color: red"><strong>初めに: SnapDragon_v0.1およびそれをもとにしたプログラムの利用には</strong></span></p>
+
+<ul>
+<li><span style="color: red"><strong>Matthew Booker (Brown University)</strong></span></li>
+<li><span style="color: red"><strong>Drosophila RNAi Screening Center</strong></span></li>
+</ul>
+
+
+<p><span style="color: red"><strong>をAcknowledmentsに加えてください</strong></span></p>
+
+<hr />
+
+<p>SnapDragon_v0.1.tar.gzからdsRNA作製プライマーデザインまでは下記の4ステップです。</p>
+
+<h5>1. SnapDragon_v0.1.tar.gzの解凍</h5>
+
+<h5>2. トランスクリプトームファイルの準備</h5>
+
+<h5>3. off-targetデータベースの作製</h5>
+
+<h5>4. dsRNA作製プライマーのデザイン</h5>
+
+<p>では各ステップについて解説します。</p>
+
+<hr />
+
+<h5>1. SnapDragon_v0.1.tar.gzの解凍</h5>
+
+<p>SnapDragon_v0.1.tar.gzをダブルクリック、もしくはTerminal.appで</p>
+
+<pre><code>tar xzf /path/to/SnapDragon_v0.1.tar.gz
+</code></pre>
+
+<p>(/path/to/部分はSnapDragon_v0.1.tar.gzを置いてあるディレクトリ。Terminal.appで&#8221;tar xvf &ldquo;までタイプして、SnapDragon_v0.1.tar.gzをドラッグしてもOK)</p>
+
+<h5>2. トランスクリプトームファイルの準備</h5>
+
+<p>off-targetとなりうる配列のデータベースを作るのに（全）遺伝子のmRNA配列をfastaフォーマットで準備します。
+カイコの場合だと
+<a href="http://sgp.dna.affrc.go.jp/ComprehensiveGeneSet/">http://sgp.dna.affrc.go.jp/ComprehensiveGeneSet/</a>
+にあるGenesetA, B, Cのfastaファイルを使うのでよいと思います（もちろん、遺伝子モデルの修正等が必要な場合は改変）。</p>
+
+<p>以下、例としてGenesetAからランダムに100遺伝子抜き出して(GenesetA.nt.100.fasta)、dsRNA作製のためのプライマー配列を得るところまでを示します。</p>
+
+<h5>3. off-targetデータベースの作製</h5>
+
+<p><span style="color: red"><strong>[注意] デフォルトでは以下の作業はSnapDragon_v0.1ディレクトリ内で行うことを想定しています。</strong>
+<strong>後に使うRNA_design.plスクリプトが</strong></span></p>
+
+<ul>
+<li>primer3</li>
+<li>frag_finder</li>
+</ul>
+
+
+<p><span style="color: red"><strong>の2つを利用するのですが、作業中のディレクトリにあることを想定しています。</strong>
+（これはRNA_design.plの中身を書き換えれば変更可能です）</span></p>
+
+<p>よって、まずはトランスクリプトームファイルをSnapDragon_v0.1に移動し、作業ディレクトリもSnapDragon_v0.1に変更します。</p>
+
+<pre><code>mv /original.path/to/GenesetA.nt.100.fasta /path/to/SnapDragon_v0.1/
+cd /path/to/SnapDragon_v0.1/
+</code></pre>
+
+<p>off-targetデータベースの作製（大きなファイルだと時間がかかります）</p>
+
+<pre><code>./frag_formatter ./GenesetA.nt.100.fasta
+</code></pre>
+
+<h5>4. dsRNA作製プライマーのデザイン</h5>
+
+<p>4a) dsRNAを作成したい遺伝子（トランスクリプト配列）のfastaファイルを準備します。ここではGenesetA.nt.100.fastaをそのまま使います。
+4b) dsRNA作製プライマーの計算</p>
+
+<pre><code>./RNA_design.pl -d ./GenesetA.nt.100.fasta -i ./GenesetA.nt.100.fasta
+</code></pre>
+
+<p>以下についてパラメーターの変更が追加で可能です。</p>
+
+<ul>
+<li>off-targetとなる配列長: デフォルトでは19塩基です（ショウジョウバエで検証された設定）。16塩基まで短くすることは可能です。オプション -f</li>
+<li>最短dsRNA配列長: デフォルト300塩基。オプション -l</li>
+<li>最長dsRNA配列長: デフォルト600塩基。オプション -u</li>
+<li><p>デザインプライマーペア数: デフォルト5。オプション -n</p>
+
+<p>  ./RNA_design.pl -d ./GenesetA.nt.100.fasta -i ./GenesetA.nt.100.fasta -f 16 -l 300 -u 500 -n 3</p></li>
+</ul>
+
+
+<p>うまく動けば以下のような出力が得られます(下記はデフォルト設定での1遺伝子分の出力。 -iで入力したfastaファイルに記述されている遺伝子数分出力されます)。</p>
+
+<pre><code>Sequence: BMgn004417|Gene011455
+The following are potential primary targets:
+None
+There are 0 potential off-targets to avoid.
+Left     Right     Product Size     Pair Penalty (lower is better)
+GACGGTGTATCCCAGAGCAT     CGAGCTGTTCTTTCCCTCAC     402     0.0533
+CACGTCGGTTCTACACATGG     AGATGTTCCCGGTGTCAAAG     318     0.0583
+GACGGTGTATCCCAGAGCAT     TGTTCCTGCACTCAACGAAG     472     0.0674
+GACGGTGTATCCCAGAGCAT     AGATGTTCCCGGTGTCAAAG     568     0.0764
+TAATGAGCTTCCCGGTTTTG     TGCACTCAACGAAGATCTGG     331     0.0832
+Successfully designed primer(s)!
+################################################################
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Manual for Mulberry]]></title>
